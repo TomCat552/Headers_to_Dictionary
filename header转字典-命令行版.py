@@ -68,10 +68,11 @@ def str_to_json(header_data):
             str_headers += f"'{data[0]}': '{data[1]}',\n\t"
         else:
             results = split_string(data[1], int(terminal_size[0] * 0.75))
-            str_headers += f"'{data[0]}': '{results[0]}',\n\t"
-            for result in results[1:]:
+            str_headers += f"'{data[0]}': '{results[0]}'\n\t"
+            for result in results[1:-1]:
                 str_headers += f"'{result}'\n\t"
-    str_headers += "\n}"
+            str_headers += f"'{results[-1]}',\n\t"
+    str_headers += "}"
     return headers, str_headers
 
 
